@@ -1,0 +1,26 @@
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card shadow">
+            <div class="card-body p-4">
+                <h3 class="text-center mb-4 fw-bold">Login</h3>
+                <form method="POST">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            Invalid username or password. Please try again.
+                        </div>
+                    {% endif %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary w-100 mt-2">Login</button>
+                </form>
+                <p class="text-center mt-3">
+                    Don't have an account? <a href="{% url 'signup' %}">Signup</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
